@@ -33,6 +33,7 @@ body {
 	padding: 40px 40px 0px 40px;
 	height: 100%;
 	/* border: 1px solid black; */
+	max-width: 400px;
 	width: 80%;
 	margin: 0px auto;
 	background-image: url("./images/pattern-bg.svg");
@@ -68,7 +69,7 @@ button {
 }
 
 .testimonial-1 {
-	margin-top: 20px;
+	padding-top: 20px;
 }
 
 h1 {
@@ -97,4 +98,100 @@ p {
 .gray-text {
 	font-weight: 500;
 	color: hsl(240, 18%, 77%);
+}
+
+@media (min-width: 768px) {
+	.img-wrapper {
+		margin: 0px;
+		padding: 56px 66px 0px 60px;
+	}
+
+	h1 {
+		padding: 50px 50px 0px 50px;
+		font-size: 1.6rem;
+	}
+	p {
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 1000px) {
+	.testimonial-1 {
+		flex-direction: row-reverse;
+		height: 90vh;
+		position: relative;
+		justify-content: flex-end;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+
+	.img-wrapper {
+		display: flex;
+		flex-direction: row;
+		max-width: 500px;
+		z-index: -1;
+		margin: auto;
+		height: auto;
+		position: absolute;
+		right: 0;
+		background-position-y: center;
+		padding: 0px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin-right: 40px;
+		height: 100%;
+		background-size: 100%;
+	}
+
+	.testimonial {
+		width: 65%;
+	}
+
+	img {
+		width: 390px;
+		display: block;
+		transform: translate(-13px, 25px);
+	}
+
+	h1 {
+		text-align: left;
+	}
+
+	.text {
+		background-position: top left;
+		background-position-x: 137px;
+		padding-left: 45px;
+	}
+
+	h1 {
+		font-size: 1.6rem;
+	}
+
+	p {
+		display: flex;
+		flex-direction: row;
+		padding-left: 50px;
+	}
+
+	.gray-text {
+		margin-left: 10px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.img-wrapper {
+		max-width: 715px;
+	}
+	img {
+		width: 555px;
+	}
+	h1 {
+		font-size: 2.1rem;
+	}
+
+	.testimonial {
+		width: 60%;
+	}
 }
