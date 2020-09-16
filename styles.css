@@ -267,4 +267,8 @@ p {
 	.testimonial {
 		width: 60%;
 	}
+
+	.attribution {
+		font-size: 1.6rem;
+	}
 }
