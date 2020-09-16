@@ -18,6 +18,20 @@ var data = [
 	},
 ];
 
+var setAnimation = (str) => {
+	if (str === "next") {
+		document.querySelector("section").classList.toggle("animation-from-right");
+		setTimeout(function () {
+			$("section").removeClass("animation-from-right");
+		}, 500);
+	} else {
+		document.querySelector("section").classList.toggle("animation-from-left");
+		setTimeout(function () {
+			$("section").removeClass("animation-from-left");
+		}, 500);
+	}
+};
+
 var setTestimonial = (index, d) => {
 	document.querySelector(".name").innerText = d[index].name;
 	document.querySelector("h1").innerHTML = d[index].testimonial;
@@ -33,7 +47,7 @@ var getIndex = () => {
 
 nextBtn.addEventListener("click", (event) => {
 	let currentIndex = getIndex();
-
+	setAnimation("next");
 	currentIndex === data.length - 1
 		? setTestimonial(0, data)
 		: setTestimonial(currentIndex + 1, data);
@@ -41,6 +55,7 @@ nextBtn.addEventListener("click", (event) => {
 
 prevBtn.addEventListener("click", (event) => {
 	let currentIndex = getIndex();
+	setAnimation("prev");
 	currentIndex === 0
 		? setTestimonial(data.length - 1, data)
 		: setTestimonial(currentIndex - 1, data);
@@ -51,6 +66,7 @@ document.addEventListener("keydown", (event) => {
 
 	//next
 	if (event.keyCode === 39) {
+		setAnimation("next");
 		currentIndex === data.length - 1
 			? setTestimonial(0, data)
 			: setTestimonial(currentIndex + 1, data);
@@ -58,6 +74,7 @@ document.addEventListener("keydown", (event) => {
 
 	//prev
 	if (event.keyCode === 37) {
+		setAnimation("prev");
 		currentIndex === 0
 			? setTestimonial(data.length - 1, data)
 			: setTestimonial(currentIndex - 1, data);
