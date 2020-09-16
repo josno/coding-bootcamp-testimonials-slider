@@ -3,6 +3,7 @@ const btn = document.querySelectorAll("svg");
 var toggle = (currentElement, nextElement) => {
 	currentElement.classList.toggle("do-not-display");
 	nextElement.classList.toggle("do-not-display");
+	nextElement.classList.add("animation");
 	nextElement.classList.add("testimonial-1");
 };
 
