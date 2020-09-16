@@ -1,4 +1,23 @@
 const btn = document.querySelectorAll("svg");
+let testimonySection = document.querySelector("h1");
+let personName = document.querySelector(".name");
+let currentPosition = document.querySelector(".work-title");
+let currentImage = document.querySelector("img");
+
+const data = [
+	{
+		testimonial:
+			"\u201C I\u2019ve been interested in coding for a while but never taken the jump, until now. I couldn\u2019t recommend this course enough. I\u2019m now in the job of my dreams and so excited about the future. \u201D",
+		name: "Tanya Sinclair",
+		job: "UX Engineer",
+	},
+	{
+		name: "John Tarkpor",
+		testimonial:
+			"\u201C If you want to lay the best foundation possible I\u2019d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer. \u201D",
+		job: "Junior Front-end Developer",
+	},
+];
 
 var toggle = (currentElement, nextElement) => {
 	currentElement.classList.toggle("do-not-display");

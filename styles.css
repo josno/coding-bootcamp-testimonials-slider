@@ -69,17 +69,22 @@ img {
 }
 
 button {
+	border: 0px;
+	background: transparent;
+}
+
+.button-wrapper {
 	display: flex;
+	margin: 0px auto;
 	width: 80px;
 	border-radius: 40px;
 	padding: 10px;
-	border: 0px;
 	background-color: white;
 	justify-content: space-between;
 	box-shadow: -3px 3px 10px grey;
 	transform: translateY(-23px);
-	margin: 0 auto;
 }
+
 .button-wrapper:hover {
 	cursor: pointer;
 }
