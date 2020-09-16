@@ -1,60 +1,65 @@
-const btn = document.querySelectorAll("svg");
-let testimonySection = document.querySelector("h1");
-let personName = document.querySelector(".name");
-let currentPosition = document.querySelector(".work-title");
-let currentImage = document.querySelector("img");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
 
-const data = [
+var data = [
 	{
 		testimonial:
 			"\u201C I\u2019ve been interested in coding for a while but never taken the jump, until now. I couldn\u2019t recommend this course enough. I\u2019m now in the job of my dreams and so excited about the future. \u201D",
 		name: "Tanya Sinclair",
 		job: "UX Engineer",
+		image: "./images/image-tanya.jpg",
 	},
 	{
 		name: "John Tarkpor",
 		testimonial:
 			"\u201C If you want to lay the best foundation possible I\u2019d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer. \u201D",
 		job: "Junior Front-end Developer",
+		image: "./images/image-john.jpg",
 	},
 ];
 
-var toggle = (currentElement, nextElement) => {
-	currentElement.classList.toggle("do-not-display");
-	nextElement.classList.toggle("do-not-display");
-	nextElement.classList.add("animation");
-	nextElement.classList.add("testimonial-1");
+var setTestimonial = (index, d) => {
+	document.querySelector(".name").innerText = d[index].name;
+	document.querySelector("h1").innerHTML = d[index].testimonial;
+	document.querySelector(".work-title").innerHTML = d[index].job;
+	document.querySelector("img").src = d[index].image;
 };
 
-var goNext = (l, c, n) => {
-	if (c.id === (l.length - 1).toString()) {
-		c = l[0];
-		n = l[1];
+var getIndex = () => {
+	let currentName = document.querySelector(".name").innerText;
+	let returnIndex = data.findIndex((i) => i.name === currentName);
+	return returnIndex;
+};
+
+nextBtn.addEventListener("click", (event) => {
+	let currentIndex = getIndex();
+
+	currentIndex === data.length - 1
+		? setTestimonial(0, data)
+		: setTestimonial(currentIndex + 1, data);
+});
+
+prevBtn.addEventListener("click", (event) => {
+	let currentIndex = getIndex();
+	currentIndex === 0
+		? setTestimonial(data.length - 1, data)
+		: setTestimonial(currentIndex - 1, data);
+});
+
+document.addEventListener("keydown", (event) => {
+	let currentIndex = getIndex();
+
+	//next
+	if (event.keyCode === 39) {
+		currentIndex === data.length - 1
+			? setTestimonial(0, data)
+			: setTestimonial(currentIndex + 1, data);
 	}
 
-	toggle(c, n);
-};
-
-var goBack = (l, c, n) => {
-	const beginningOfList = 0;
-	if (c.id === beginningOfList.toString()) {
-		c = l[0];
-		n = l[1];
+	//prev
+	if (event.keyCode === 37) {
+		currentIndex === 0
+			? setTestimonial(data.length - 1, data)
+			: setTestimonial(currentIndex - 1, data);
 	}
-
-	toggle(c, n);
-};
-
-btn.forEach((i) => {
-	i.addEventListener("click", (event) => {
-		var list = document.querySelectorAll("section");
-		var current = document.querySelectorAll("section")[0];
-		var next = document.querySelectorAll("section")[1];
-
-		if (i.classList.contains("next")) {
-			goNext(list, current, next);
-		} else {
-			goBack(list, current, next);
-		}
-	});
 });
